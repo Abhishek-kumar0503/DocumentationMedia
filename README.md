@@ -1,6 +1,5 @@
 # DocumentationMedia
 
-![DocumentationMedia Logo](documentation/media/static/images/logo.png)
 
 DocumentationMedia is an open source platform for hosting, managing, and collaborating on technical documentation. The platform makes it easy to search, explore, and interact with documentation from various technologies.
 
