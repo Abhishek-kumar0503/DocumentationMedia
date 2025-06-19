@@ -1,0 +1,29 @@
+# Core web framework
+Django==5.2.1
+asgiref==3.8.1
+sqlparse==0.5.3
+
+# AI and embeddings
+groq==0.25.0
+sentence-transformers==4.1.0
+torch==2.7.0
+
+# Database
+psycopg2-binary==2.9.10
+
+# Vector search dependencies
+numpy==2.2.6
+scikit-learn==1.6.1
+scipy==1.15.3
+
+# Web functionality
+requests==2.32.3
+beautifulsoup4==4.13.4
+httpx==0.28.1
+
+# Environment and configuration
+python-dotenv==1.1.0
+
+# Utilities
+tqdm==4.67.1
+pydantic==2.11.5
