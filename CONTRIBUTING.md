@@ -2,34 +2,29 @@
 
 Thank you for considering contributing to DocumentationMedia! This is an open source project and we appreciate any contributions that help improve the documentation and functionality.
 
-## How to Contribute
+## Table of Contents
 
-### Reporting Issues
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [Submitting Changes](#submitting-changes)
+- [Pull Request Guidelines](#pull-request-guidelines)
+- [Documentation Contributions](#documentation-contributions)
+- [Code Style Guidelines](#code-style-guidelines)
+- [Testing](#testing)
+- [Contact](#contact)
 
-If you find any issues with the documentation or the application, please submit an issue on GitHub with the following information:
+## Code of Conduct
 
-1. A clear, descriptive title
-2. A detailed description of the issue
-3. Steps to reproduce the issue
-4. Expected behavior
-5. Actual behavior
-6. Screenshots (if applicable)
-7. Environment details (browser, operating system, etc.)
+Please be respectful and considerate of others when contributing to this project. We aim to foster an inclusive and welcoming community for all contributors.
 
-### Submitting Changes
+## Getting Started
 
-1. Fork the repository
-2. Create a new branch for your feature or bugfix (`git checkout -b feature/your-feature-name`)
-3. Make changes to the code/documentation
-4. Add, commit, and push your changes to your fork
-5. Submit a pull request to the main repository
+Before you begin:
 
-### Pull Request Guidelines
-
-- Follow the existing code style and formatting
-- Include appropriate tests for your changes
-- Update documentation if necessary
-- Keep your pull request focused on a single topic
+1. Ensure you have a [GitHub account](https://github.com/signup)
+2. Fork the repository on GitHub
+3. Familiarize yourself with the project structure and documentation
 
 ## Development Setup
 
@@ -43,22 +38,57 @@ If you find any issues with the documentation or the application, please submit 
    cd DocumentationMedia
    ```
 
-3. Install dependencies:
+3. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+4. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Set up the database:
+5. Set up the database:
    ```bash
+   # Create .env file with database credentials
    python manage.py migrate
    ```
 
-5. Run the development server:
+6. Run the development server:
    ```bash
    python manage.py runserver
    ```
 
-6. Make your changes and test them locally before submitting a pull request
+## Submitting Changes
+
+1. Create a new branch for your feature or bugfix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. Make changes to the code/documentation
+   
+3. Add and commit your changes:
+   ```bash
+   git add .
+   git commit -m "Add detailed description of your changes"
+   ```
+
+4. Push your branch to GitHub:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. Submit a pull request on GitHub
+
+## Pull Request Guidelines
+
+- Follow the existing code style and formatting
+- Include appropriate tests for your changes
+- Update documentation if necessary
+- Keep your pull request focused on a single topic
+- Reference any relevant issues in your PR description
 
 ## Documentation Contributions
 
@@ -76,14 +106,27 @@ If you're adding or modifying documentation:
 
 ## Code Style Guidelines
 
-- Follow PEP 8 guidelines for Python code
+- Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/) guidelines for Python code
 - Use 4 spaces for indentation (not tabs)
 - Maximum line length of 100 characters
 - Write descriptive variable and function names
 - Include docstrings for all functions, classes, and modules
+- Use meaningful commit messages
 
-## Code of Conduct
+## Testing
 
-Please be respectful and considerate of others when contributing to this project.
+Before submitting a pull request, make sure your changes pass all tests:
 
-Thank you for your contributions!
+```bash
+python manage.py test
+```
+
+If you're adding new functionality, please include appropriate tests.
+
+## Contact
+
+If you have any questions or need help, feel free to:
+- Open an issue on GitHub
+- Contact the maintainers directly
+
+Thank you for contributing to DocumentationMedia!
