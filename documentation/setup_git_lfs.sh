@@ -2,10 +2,24 @@
 
 # Install Git LFS
 echo "Installing Git LFS..."
-sudo apt-get install git-lfs
+sudo apt-get install git-lfs -y
 
-# Navigate to your repository
+# Navigate to the startup directory (correct repository root)
 cd /home/hope/Desktop/startup
+
+# Create directory structure if it doesn't exist
+mkdir -p documentation/media_uploads/documentation
+
+# Create .gitattributes file in documentation folder
+echo "Creating .gitattributes file..."
+cat > documentation/.gitattributes << EOF
+# Git LFS tracking for large files
+media_uploads/documentation/*.txt filter=lfs diff=lfs merge=lfs -text
+media_uploads/documentation/*.pdf filter=lfs diff=lfs merge=lfs -text
+media_uploads/documentation/*.docx filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+EOF
 
 # Initialize Git if not already initialized
 if [ ! -d .git ]; then
@@ -20,30 +34,41 @@ git lfs install
 git lfs track "documentation/media_uploads/documentation/*.txt"
 git lfs track "documentation/media_uploads/documentation/*.pdf"
 git lfs track "documentation/media_uploads/documentation/*.docx"
-git lfs track "*.mp4"
-git lfs track "*.zip"
+git lfs track "documentation/*.mp4"
+git lfs track "documentation/*.zip"
 
-# Add .gitattributes file
+# Add root .gitattributes
 git add .gitattributes
 
-# Add remote repository if not already added
+# Add documentation .gitattributes if it exists
+if [ -f documentation/.gitattributes ]; then
+    git add documentation/.gitattributes
+fi
+
+# Add GitHub remote if not present
 if ! git remote | grep -q "origin"; then
     echo "Adding GitHub remote repository..."
     git remote add origin https://github.com/Abhishek-kumar0503/DocumentationMedia.git
 else
-    echo "GitHub remote repository already configured."
+    echo "Setting GitHub remote repository URL..."
+    git remote set-url origin https://github.com/Abhishek-kumar0503/DocumentationMedia.git
 fi
 
-# Add all files in the documentation directory
+# Stage everything in documentation/ directory
 echo "Adding documentation files to Git..."
 git add documentation/
 
-# Commit the changes
+# Commit
+echo "Committing changes..."
 git commit -m "Add documentation files with Git LFS support"
 
-# Push to GitHub
+# Push - use main or master branch depending on what exists
 echo "Pushing to GitHub repository..."
-git push -u origin main || git push -u origin master
+if git show-ref --verify --quiet refs/heads/main; then
+    git push -u origin main
+else
+    git push -u origin master
+fi
 
-echo "Git LFS setup complete. Documentation has been pushed to GitHub."
+echo "✅ Git LFS setup complete and documentation pushed to GitHub."
 echo "Repository URL: https://github.com/Abhishek-kumar0503/DocumentationMedia"
