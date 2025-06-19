@@ -1,0 +1,91 @@
+Docker Documentation Summary
+
+1. Introduction
+- Docker ek open-source containerization platform hai jo applications ko unke dependencies ke saath ek isolated environment (container) me package karta hai.
+- Containers lightweight hote hain, fast launch karte hain, aur host OS ke kernel ko share karte hain, isliye ye virtual machines se zyada efficient hain[1][2].
+
+2. Architecture Overview
+
+**Client-Server Model**
+- Docker client (`docker`) user ke commands ko accept karta hai aur Docker daemon (`dockerd`) ko forward karta hai, jo actual container operations perform karta hai[1][2][5].
+- Client aur daemon same machine pe ya remote pe ho sakte hain. Dono ke beech communication REST API, UNIX socket, ya network interface ke through hota hai[1][4][6].
+
+**Core Components**
+- Docker Daemon: Background process jo containers, images, networks, aur volumes ko manage karta hai[1][3][4][5].
+- Docker Client: CLI (Command Line Interface) ya GUI jisse user Docker se interact karta hai[1][3][5].
+- Docker Registry: Central repository jahan Docker images store, share, aur manage hoti hain. Official registry Docker Hub hai, lekin private/third-party registries bhi use ki ja sakti hain[3][5][6].
+- Docker Engine: Core software jo containers ko run, build, aur manage karta hai. Isme daemon, REST API, aur CLI shamil hain[4].
+
+3. Key Concepts
+
+**Docker Images**
+- Read-only templates hain jo application aur uske dependencies ka snapshot hota hai. Images layered architecture follow karti hain; har layer ek change represent karti hai[3][6].
+- Images ko Dockerfile se build kiya jata hai, jisme instructions hoti hain ki image kaise banegi.
+
+**Docker Containers**
+- Running instances of Docker images hain, jo isolated environments provide karte hain[1][2][3][6].
+- Containers ephemeral hote hain: changes persistent storage me na ho to container delete hone par wo changes lost ho jate hain[1].
+- Network, storage, aur resources containers ke liye customize kiye ja sakte hain.
+
+**Dockerfile**
+- Text file jisme step-by-step instructions hoti hain ki image kaise build hogi (e.g., base image, dependencies install, code copy, commands run).
+
+**Volumes**
+- Persistent storage mechanism jo containers ke data ko host machine pe save karta hai, taki container delete hone par data lost na ho[1].
+
+**Networking**
+- Docker containers ko isolated networks pe run kiya ja sakta hai. By default, bridge network use hota hai, lekin custom networks bhi create kiye ja sakte hain[6].
+
+4. Advanced Components
+
+**Docker Compose**
+- Multi-container applications ke liye configuration tool hai. YAML file (`docker-compose.yml`) me services, networks, aur volumes define kiye jate hain[1][4][6].
+
+**Container Runtimes**
+- Docker container ko run karne ke liye container runtime (e.g., containerd) use karta hai, jo Linux kernel ke features (namespaces, cgroups) ka use karta hai[2].
+
+**Docker Swarm & Orchestration**
+- Docker Swarm built-in orchestration tool hai jo multiple Docker hosts ko cluster me manage karta hai, load balancing, scaling, aur service discovery provide karta hai[6].
+
+5. How Docker Works (Workflow)
+
+- User `docker run` command deta hai.
+- Docker client command ko daemon ko send karta hai.
+- Daemon image ko registry se pull karta hai (agar local me nahi hai).
+- Daemon image se container create karta hai, filesystem allocate karta hai, network setup karta hai, aur process start karta hai[1].
+- Container isolated environment me run hota hai, lekin host ke resources (CPU, memory, storage) share karta hai.
+
+6. Underlying Technology
+
+- Docker Go language me likha gaya hai.
+- Linux kernel features jaise namespaces (process isolation), cgroups (resource management), chroot (filesystem isolation) use karta hai[1][2].
+
+7. Security & Isolation
+
+- Containers apne namespace me run karte hain, isliye ek container doosre ke processes, network, ya filesystem ko directly access nahi kar sakta[1][2].
+- Resource limits (CPU, memory) set kiye ja sakte hain.
+
+8. Docker vs Virtual Machines
+
+| Feature               | Docker Container          | Virtual Machine            |
+|-----------------------|--------------------------|----------------------------|
+| Boot Time             | Seconds                  | Minutes                    |
+| Resource Usage        | Lightweight (shares OS)  | Heavy (full OS per VM)     |
+| Isolation             | Process-level            | Hardware-level             |
+| Portability           | High                     | Moderate                   |
+| Performance Overhead  | Low                      | High                       |
+
+9. Best Practices
+
+- Small, single-purpose containers banayein.
+- Images ko lean aur minimal rakhein.
+- Persistent data ke liye volumes ka use karein.
+- Secrets ko environment variables ya Docker secrets ke through manage karein.
+- Regularly images ko update aur scan karein security vulnerabilities ke liye.
+
+10. Community & Ecosystem
+
+- Docker Hub pe lakhon public images available hain.
+- Large community, documentation, tutorials, aur third-party tools ecosystem[5][6].
+
+For more details, visit: https://docs.docker.com/get-started/docker-overview/

@@ -1,0 +1,56 @@
+Django Documentation Summary
+
+1. Introduction
+- Django ek open-source web framework hai jo Python me likha gaya hai.
+- Ye rapid development, security, aur scalability pe focus karta hai.
+- Django ka motto hai: “The web framework for perfectionists with deadlines.”
+
+2. Getting Started
+- Django ko install karne ke liye pip ka use hota hai: pip install django
+- Ek naya project start karne ke liye: django-admin startproject projectname
+- App banane ke liye: python manage.py startapp appname
+
+3. Project Structure
+- Django project me settings, URLs, aur wsgi/asgi files hoti hain.
+- Har app apne models, views, templates, aur static files manage karta hai.
+
+4. Model Layer
+- Models Python classes hain jo database tables ko represent karti hain.
+- Django ka ORM (Object-Relational Mapper) database se interact karne ke liye use hota hai.
+- Migrations se database schema manage hota hai[1][2].
+
+5. View Layer
+- Views user ki request process karke response return karti hain.
+- Function-based aur class-based views dono supported hain.
+- URLconf se URLs ko views se map kiya jata hai[2].
+
+6. Template Layer
+- Templates HTML files hoti hain jisme Django ka template language use hota hai.
+- Designer-friendly syntax hai, jisse dynamic content render hota hai[2].
+
+7. Forms
+- Django ki forms library HTML forms ko generate, validate, aur process karti hai.
+- ModelForms se models ke basis par forms automatically generate ho jati hain[2].
+
+8. Authentication
+- Django built-in authentication system deta hai: user login, logout, registration, permissions, sessions[2].
+
+9. Admin Interface
+- Django ka admin panel automatically models ko ek management interface deta hai.
+- Highly customizable hai aur production-ready bhi hai[2][4].
+
+10. Additional Features
+- Middleware: Request/response processing ke liye.
+- Static files aur media files ka management.
+- Testing framework.
+- Internationalization (i18n) aur localization (l10n) support.
+
+11. Django REST Framework (DRF)
+- Django REST framework APIs banane ke liye ek popular toolkit hai.
+- Serialization, authentication, permissions, filtering, pagination, browsable API jaise features provide karta hai[5].
+
+12. Community & Documentation
+- Django ki documentation kaafi comprehensive hai, jisme tutorials, topic guides, reference, aur how-to guides included hain[1][2].
+- Community support, events, aur jobs bhi available hain.
+
+For more details, visit the official documentation: https://docs.djangoproject.com/en/5.2/

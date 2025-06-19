@@ -1,0 +1,94 @@
+Kubernetes Documentation Summary
+
+1. Introduction
+- Kubernetes (k8s) ek open-source platform hai jo containerized workloads aur services ko automate, deploy, scale, aur manage karta hai[1][2][4][6][8].
+- Yeh declarative configuration aur automation par focus karta hai, aur cloud, on-premises, ya hybrid environments me kaam karta hai[1][2][8].
+- Kubernetes ka core concept hai “cluster,” jisme ek control plane aur ek ya zyada worker nodes hote hain[1][2][7][8].
+
+2. Core Architecture
+
+**a. Cluster Structure**
+- Cluster: Ek group of machines (nodes) jo containers ko run karte hain[1][2][7][8].
+- Control Plane: Cluster ka brain, jo cluster ki state manage karta hai aur scheduling, scaling, monitoring, aur management handle karta hai[2][7][8].
+- Nodes: Physical ya virtual machines jahan containers run hote hain. Har node pe ek container runtime, kubelet, aur kube-proxy hota hai[2][3][6][7][8].
+
+**b. Control Plane Components**
+- kube-apiserver: API server, cluster ka entry point, REST API provide karta hai[7][8].
+- etcd: Distributed, consistent key-value store, cluster ki state store karta hai[7][8].
+- kube-scheduler: Pods ko suitable nodes pe assign karta hai[7][8].
+- kube-controller-manager: Cluster state ko desired state me maintain karta hai (replica, jobs, endpoints, etc.)[7][8].
+- cloud-controller-manager: Cloud provider ke features integrate karta hai (optional)[7][8].
+
+**c. Node Components**
+- kubelet: Node pe running pods ko manage karta hai, control plane se instructions leta hai[3][6][7][8].
+- kube-proxy: Networking rules manage karta hai, traffic forward karta hai[3][6][7][8].
+- Container runtime: Containers ko run karta hai (Docker, containerd, CRI-O, etc.)[3][6][7][8].
+
+3. Kubernetes Objects & Concepts
+
+- Pod: Smallest deployable unit, ek ya zyada tightly coupled containers ka group[3][6][7][8].
+- ReplicaSet: Pods ke desired number ko maintain karta hai.
+- Deployment: Declarative updates, rollouts, rollbacks, scaling manage karta hai[1][4][8].
+- StatefulSet: Stateful applications ke liye, unique network IDs aur persistent storage manage karta hai[8].
+- DaemonSet: Har node pe ek pod ka instance ensure karta hai.
+- Job/CronJob: Batch aur scheduled tasks ke liye.
+- Service: Pods ke group ko stable network endpoint provide karta hai, load balancing, service discovery enable karta hai[1][4][8].
+- Namespace: Cluster resources ko logical groups me divide karta hai (e.g., dev, staging, prod)[5].
+- Persistent Volume (PV) & Persistent Volume Claim (PVC): Persistent storage abstraction[1][6][8].
+- ConfigMap & Secret: Configuration aur sensitive data ko securely manage karta hai[4].
+
+4. Key Features
+
+- **Service Discovery & Load Balancing:** Pods ko DNS name ya IP se expose karta hai, aur network traffic ko distribute karta hai[1][4][8].
+- **Storage Orchestration:** Local, cloud, ya network storage ko automatically mount karta hai[1][4][8].
+- **Automated Rollouts & Rollbacks:** Application updates ko safely rollout karta hai, aur failures pe rollback bhi kar sakta hai[1][4][8].
+- **Self-Healing:** Crashed containers ko restart, unhealthy pods ko replace, aur failed nodes pe workload reschedule karta hai[1][4][8].
+- **Automatic Bin Packing:** Resource requirements ke basis pe containers ko efficiently nodes pe place karta hai[1][4].
+- **Horizontal Scaling:** CLI, UI, ya metrics ke basis pe apps ko scale up/down kar sakte hain[4][8].
+- **Secret & Configuration Management:** Sensitive data aur configs ko securely manage karta hai[4].
+- **Batch Execution:** Batch jobs aur CI workloads ko bhi manage karta hai[4].
+- **IPv4/IPv6 Dual Stack:** Pods aur services ko dual-stack IP allocation deta hai[4].
+- **Extensibility:** CRDs, custom controllers, aur operators ke through functionality extend kar sakte hain[4][8].
+
+5. Networking
+
+- Cluster networking pods ko ek dusre se communicate karne deta hai, CNI plugins (Calico, Flannel, etc.) use kiye ja sakte hain[3].
+- kube-proxy network rules manage karta hai, aur services ko expose karta hai[3][7][8].
+
+6. Storage
+
+- Persistent Volumes (PV) aur Persistent Volume Claims (PVC) se storage ko abstract kiya jata hai[1][6][8].
+- Multiple storage backends supported hain: local disk, NFS, cloud storage, etc[4][8].
+
+7. Security
+
+- Role-Based Access Control (RBAC): Access ko granular level pe manage karta hai[5].
+- Namespaces: Logical isolation, resource quotas, aur network policies implement karne me help karta hai[5].
+- Secrets: Sensitive data (passwords, tokens) ko securely store karta hai[4].
+
+8. Best Practices
+
+- Namespaces ka use karke environments aur teams ko logically segregate karein[5].
+- Readiness & liveness probes use karein for health checks[5].
+- Autoscaling enable karein[5].
+- Resource requests & limits set karein[5].
+- RBAC aur network policies configure karein[5].
+- Declarative configuration (YAML manifests) ka use karein[8].
+- Monitoring, logging, aur audit policies implement karein[5].
+
+9. Extensibility & Ecosystem
+
+- Kubernetes highly extensible hai: CRDs, operators, aur 3rd party plugins se functionality extend kar sakte hain[4][8].
+- Cloud providers (AWS, GCP, Azure) managed Kubernetes services offer karte hain, aur local development ke liye Minikube, K3s jaise tools available hain[8].
+
+10. Use Cases
+
+- Microservices, stateless/statful apps, ML workloads, CI/CD pipelines, hybrid/multi-cloud deployments[8].
+
+11. Documentation & Resources
+
+- Official docs: https://kubernetes.io/docs/
+- Tutorials: Spacelift, Komodor, Red Hat OpenShift, Spot.io[2][3][5][6][8].
+- Community support: CNCF, GitHub, forums.
+
+Kubernetes containers ko large-scale, automated, resilient, aur portable tarike se manage karne ka industry standard hai[1][2][4][6][8].
